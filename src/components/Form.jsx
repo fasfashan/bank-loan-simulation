@@ -225,7 +225,7 @@ export default function FormSimulation() {
                   onChange={handleInputChange}
                 >
                   <option value="">Pilih Wilayah Asuransi</option>
-                  <option value="wilayah1">Wilayah 1</option>
+                  <option value="wilayah1"> Sumatera dan sekitarnya</option>
                   onFocus=
                   {() => {
                     if ("inputMode" in document.createElement("input")) {
@@ -233,7 +233,7 @@ export default function FormSimulation() {
                       input.inputMode = "numeric";
                     }
                   }}
-                  <option value="wilayah2">Wilayah 2</option>
+                  <option value="wilayah2">Jakarta dan Bodetabek</option>
                   onFocus=
                   {() => {
                     if ("virtualKeyboard" in navigator) {
@@ -241,7 +241,7 @@ export default function FormSimulation() {
                       navigator.virtualKeyboard.show();
                     }
                   }}
-                  <option value="wilayah3">Wilayah 3</option>
+                  <option value="wilayah3">Wilayah Indonesia Lainnya</option>
                 </select>
               </div>
 
