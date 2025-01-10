@@ -137,7 +137,7 @@ export default function FormSimulation() {
 
   return (
     <div>
-      <div className="max-w-3xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-40 z-9 mx-auto p-12   space-y-10">
+      <div className="max-w-3xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-24 z-9 mx-auto p-12   space-y-10">
         <div className="flex justify-between gap-12 items-center">
           <div className="space-y-4">
             <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
