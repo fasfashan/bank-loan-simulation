@@ -133,13 +133,17 @@ export default function FormSimulation() {
   return (
     <>
       <div className="max-w-4xl relative bg-white border border-neutral-200 rounded-lg -mt-20 z-10 mx-auto p-12 space-y-10">
-        <div className="space-y-4">
-          <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
-          <p className="text-lg text-neutral-600 max-w-xl">
-            Murni Bank siap memenuhi kebutuhan Anda dengan proses yang mudah dan
-            cepat. Nikmati pelayanan prima dan pengalaman yang menyenangkan,
-            hadir di seluruh Indonesia untuk lebih dekat dengan Anda.
-          </p>
+        <div className="flex justify-between gap-12 items-center">
+          <div className="space-y-4">
+            <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
+            <p className="text-md text-neutral-600 ">
+              Murni Bank siap memenuhi kebutuhan Anda dengan proses yang mudah
+              dan cepat. Nikmati pelayanan prima dan pengalaman yang
+              menyenangkan, hadir di seluruh Indonesia untuk lebih dekat dengan
+              Anda.
+            </p>
+          </div>
+          <img src="/icon-top.png" alt="" />
         </div>
         <div className=" grid grid-cols-2 gap-12">
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
