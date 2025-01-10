@@ -17,17 +17,19 @@ function App() {
     <>
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white space-y-4 p-20 rounded-2xl shadow-lg text-center">
-            <img src="/calculator.gif" className="w-40 m-auto" alt="" />
-            <div className="space-y-2">
-              <h2 className="text-xl font-semibold ">Calculate Your Loan</h2>
-              <button
-                onClick={handleClosePopup}
-                className="px-4 py-2 bg-primary text-white rounded"
-              >
-                Touch here to get started
-              </button>
+          <div className="bg-white space-y-8 p-20 rounded-2xl shadow-lg text-center">
+            <div className="space-y-1">
+              <img src="/calculator.gif" className="w-40 m-auto" alt="" />
+              <h2 className="text-xl font-semibold ">
+                Find the Best Loan for You
+              </h2>
             </div>
+            <button
+              onClick={handleClosePopup}
+              className="px-4 py-2 bg-primary text-white rounded"
+            >
+              Touch here to get started
+            </button>
           </div>
         </div>
       )}

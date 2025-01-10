@@ -152,9 +152,12 @@ export default function FormSimulation() {
         </div>
         <div className=" grid grid-cols-2 gap-12">
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">
-              Simulasi Kredit Kendaraan
-            </h2>
+            <div className="flex gap-2 items-center mb-8">
+              <img src="/credit-icon.svg" alt="" />
+              <h2 className="text-xl font-semibold">
+                Simulasi Kredit Kendaraan
+              </h2>
+            </div>
             <form className="space-y-4">
               <label htmlFor="jenisSimulasi" className="block mb-1">
                 Pilih kendaraan:
@@ -344,7 +347,10 @@ export default function FormSimulation() {
           </div>
 
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Estimasi Angsuran</h2>
+            <div className="flex gap-2 items-center mb-8">
+              <img src="/installments-icon.svg" alt="" />
+              <h2 className="text-xl font-semibold ">Estimasi Angsuran</h2>
+            </div>
             <p className="mt-4 mb-4 text-sm text-gray-600">
               Nominal angsuran bersifat estimasi dan dapat berubah sesuai dengan
               syarat dan ketentuan yang berlaku
