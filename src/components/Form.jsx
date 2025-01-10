@@ -136,8 +136,8 @@ export default function FormSimulation() {
   };
 
   return (
-    <>
-      <div className="max-w-4xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-20 z-10 mx-auto p-12 space-y-10">
+    <div>
+      <div className="max-w-3xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-40 z-9 mx-auto p-12   space-y-10">
         <div className="flex justify-between gap-12 items-center">
           <div className="space-y-4">
             <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
@@ -343,6 +343,25 @@ export default function FormSimulation() {
               >
                 Hitung
               </button>
+              <button
+                type="button"
+                className="w-full bg-white border border-neutral-300 shadow-inner p-2 rounded mt-4"
+                onClick={() => {
+                  setFormValues({
+                    jenisSimulasi: "",
+                    jenisKendaraan: "",
+                    hargaKendaraan: "",
+                    wilayahAsuransi: "",
+                    jenisAsuransi: "",
+                    provinsi: "",
+                    domisili: "",
+                    uangMuka: "",
+                  });
+                  setEstimasiAngsuran(null);
+                }}
+              >
+                Reset
+              </button>
             </form>
           </div>
 
@@ -351,9 +370,9 @@ export default function FormSimulation() {
               <img src="/installments-icon.svg" alt="" />
               <h2 className="text-xl font-semibold ">Estimasi Angsuran</h2>
             </div>
-            <p className="mt-4 mb-4 text-sm text-gray-600">
+            <p className="mt-4 mb-4  italic text-gray-600">
               Nominal angsuran bersifat estimasi dan dapat berubah sesuai dengan
-              syarat dan ketentuan yang berlaku
+              syarat dan ketentuan yang berlaku.
             </p>
             {estimasiAngsuran && (
               <div>
@@ -382,12 +401,6 @@ export default function FormSimulation() {
                           </p>
                         </div>
                       </div>
-                      <button
-                        type="button"
-                        className="w-fit bg-primary text-white py-2  px-4 rounded"
-                      >
-                        Pilih
-                      </button>
                     </div>
                   ))}
                 </div>
@@ -396,6 +409,6 @@ export default function FormSimulation() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

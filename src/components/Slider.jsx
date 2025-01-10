@@ -25,7 +25,7 @@ const Slider = () => {
           <img
             src={image}
             alt={`Slide ${index + 1}`}
-            className="w-[1080px] m-auto  object-cover"
+            className="w-[1080px] m-auto  px-8 object-cover"
           />
         </div>
       ))}

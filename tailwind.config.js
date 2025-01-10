@@ -6,6 +6,7 @@ export default {
       maxWidth: {
         "5xl": "1080px",
         "4xl": "1000px",
+        "3xl": "950px",
       },
       colors: {
         primary: "#006CB7",
