@@ -34,7 +34,12 @@ export default function FormSimulation() {
 
     fetchProvinces();
   }, []);
-
+  useEffect(() => {
+    setFormValues((prev) => ({
+      ...prev,
+      jenisSimulasi: "mobil",
+    }));
+  }, []);
   // Fetch regencies data when province changes
   useEffect(() => {
     const fetchKabupaten = async () => {
@@ -104,11 +109,11 @@ export default function FormSimulation() {
     const dp = parseInt(uangMuka.replace(/\./g, ""), 10) || 0;
 
     // Validate minimum DP (usually 20% of vehicle price)
-    const minDP = harga * 0.2;
-    if (dp < minDP) {
-      alert(`Uang muka minimum adalah ${formatCurrency(minDP.toString())}`);
-      return;
-    }
+    // const minDP = harga * 0.2;
+    // if (dp < minDP) {
+    //   alert(`Uang muka minimum adalah ${formatCurrency(minDP.toString())}`);
+    //   return;
+    // }
 
     // Calculate monthly payments for each tenor
     const bunga = 0.1; // 10% annual interest rate
@@ -132,7 +137,7 @@ export default function FormSimulation() {
 
   return (
     <>
-      <div className="max-w-4xl relative bg-white border border-neutral-200 rounded-lg -mt-20 z-10 mx-auto p-12 space-y-10">
+      <div className="max-w-4xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-20 z-10 mx-auto p-12 space-y-10">
         <div className="flex justify-between gap-12 items-center">
           <div className="space-y-4">
             <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
@@ -143,7 +148,7 @@ export default function FormSimulation() {
               Anda.
             </p>
           </div>
-          <img src="/icon-top.png" alt="" />
+          <img className="w-60" src="/car-leasing.png" alt="" />
         </div>
         <div className=" grid grid-cols-2 gap-12">
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
@@ -151,20 +156,42 @@ export default function FormSimulation() {
               Simulasi Kredit Kendaraan
             </h2>
             <form className="space-y-4">
-              <div>
-                <label htmlFor="jenisSimulasi" className="block mb-1">
-                  Jenis Simulasi
-                </label>
-                <select
-                  id="jenisSimulasi"
-                  className="w-full p-2 border border-neutral-300 rounded"
-                  value={formValues.jenisSimulasi}
-                  onChange={handleInputChange}
+              <label htmlFor="jenisSimulasi" className="block mb-1">
+                Pilih kendaraan:
+              </label>
+              <div className="flex justify-between gap-4">
+                <div
+                  className={`flex space-y-4 border ${
+                    formValues.jenisSimulasi === "mobil"
+                      ? "border-primary border-2"
+                      : "border-neutral-300 opacity-50"
+                  } rounded-lg flex-col justify-center items-center p-6 cursor-pointer`}
+                  onClick={() =>
+                    setFormValues((prev) => ({
+                      ...prev,
+                      jenisSimulasi: "mobil",
+                    }))
+                  }
                 >
-                  <option value="">Pilih Jenis Simulasi</option>
-                  <option value="mobil">Mobil</option>
-                  <option value="motor">Motor</option>
-                </select>
+                  <img src="/Mobil.png" alt="" />
+                  <p className="font-medium">Mobil</p>
+                </div>
+                <div
+                  className={`flex space-y-4 border ${
+                    formValues.jenisSimulasi === "motor"
+                      ? "border-primary border-2 "
+                      : "border-neutral-300 opacity-50"
+                  } rounded-lg flex-col justify-center items-center p-6 cursor-pointer`}
+                  onClick={() =>
+                    setFormValues((prev) => ({
+                      ...prev,
+                      jenisSimulasi: "motor",
+                    }))
+                  }
+                >
+                  <img src="/Motor.png" alt="" />
+                  <p className="font-medium">Motor</p>
+                </div>
               </div>
 
               <div>
