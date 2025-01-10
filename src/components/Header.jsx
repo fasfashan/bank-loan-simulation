@@ -22,13 +22,13 @@ export default function Header() {
             </a>
           </nav>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-4">
           <input
             className="shadow appearance-none border rounded py-2 px-3  text-gray-700 leading-tight focus:outline-blue-200 focus:shadow-outline  w-full"
             placeholder="Search"
             type="text"
           />
-          <i className="fas fa-user-circle text-blue-600 text-2xl"></i>
+          <img src="/user-circle.svg" className="h-[38px]" alt="" />
         </div>
       </header>
     </div>
