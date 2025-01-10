@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className=" mx-auto bg-gradient-to-r from-blue-700 to-blue-800 py-8 mt-10 p-4">
+    <div className=" mx-auto bg-gradient-to-r from-primary to-blue-950 py-8 mt-10 p-4">
       <div className="flex justify-between flex-col  max-w-5xl m-auto space-y-10">
         <img
           width={184}
