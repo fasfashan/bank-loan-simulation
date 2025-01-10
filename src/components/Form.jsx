@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function FormSimulation() {
+  const [errorMessage, setErrorMessage] = useState("");
   const [formValues, setFormValues] = useState({
     jenisSimulasi: "",
     jenisKendaraan: "",
@@ -100,7 +101,12 @@ export default function FormSimulation() {
       !domisili ||
       !uangMuka
     ) {
-      alert("Harap lengkapi semua form sebelum menghitung estimasi angsuran.");
+      setErrorMessage(
+        "Harap lengkapi semua form sebelum menghitung estimasi angsuran."
+      );
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
       return;
     }
 
@@ -343,6 +349,10 @@ export default function FormSimulation() {
               >
                 Hitung
               </button>
+
+              {errorMessage && (
+                <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
+              )}
               <button
                 type="button"
                 className="w-full bg-white border border-neutral-300 shadow-inner p-2 rounded mt-4"
