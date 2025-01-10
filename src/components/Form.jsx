@@ -136,10 +136,9 @@ export default function FormSimulation() {
         <div className="space-y-4">
           <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
           <p className="text-lg text-neutral-600 max-w-xl">
-            Murni Tunas Finance siap memenuhi kebutuhan Anda dengan proses yang
-            mudah dan cepat. Nikmati pelayanan prima dan pengalaman yang
-            menyenangkan, hadir di seluruh Indonesia untuk lebih dekat dengan
-            Anda.
+            Murni Bank siap memenuhi kebutuhan Anda dengan proses yang mudah dan
+            cepat. Nikmati pelayanan prima dan pengalaman yang menyenangkan,
+            hadir di seluruh Indonesia untuk lebih dekat dengan Anda.
           </p>
         </div>
         <div className=" grid grid-cols-2 gap-12">
