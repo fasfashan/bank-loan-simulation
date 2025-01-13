@@ -27,7 +27,9 @@ const Faq = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 mt-20">
-      <h2 className="text-2xl font-semibold mb-6">Pertanyaan umum</h2>
+      <h2 className="text-2xl font-semibold mb-6">
+        Frequently Asked Question (FAQ)
+      </h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div
