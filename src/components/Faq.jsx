@@ -12,7 +12,7 @@ const Faq = () => {
     {
       question: "What information is needed for a loan simulation?",
       answer:
-        "You need to provide vehicle type. down payment, insurance type & area, domicile, and others.",
+        "You need to provide vehicle type, down payment, insurance type & area, domicile, and others.",
     },
     {
       question: "Does the loan simulation include additional fees?",

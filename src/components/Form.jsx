@@ -18,7 +18,7 @@ export default function FormSimulation() {
 
   const [selectedProvince, setSelectedProvince] = useState("");
   const [regencies, setRegencies] = useState([]);
-  const tenors = [11, 24, 36, 48];
+  const tenors = [12, 24, 36, 48];
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
@@ -305,7 +305,7 @@ export default function FormSimulation() {
                   value={formValues.jenisAsuransi}
                   onChange={handleInputChange}
                 >
-                  <option value="">Choose here</option>
+                  <option value="">Choose Here</option>
                   <option value="comprehensive">
                     All Risk (Comprehensive)
                   </option>
@@ -402,7 +402,7 @@ export default function FormSimulation() {
                     >
                       <div className="space-y-2">
                         <h3 className=" font-semibold">
-                          Tenure {item.tenor} bulan
+                          Tenure {item.tenor} month
                         </h3>
                         <div className="space-y-1">
                           <p className="text-sm text-gray-600">
