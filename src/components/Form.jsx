@@ -146,12 +146,12 @@ export default function FormSimulation() {
       <div className="max-w-3xl relative bg-white border border-neutral-200 shadow-md rounded-lg -mt-24 z-9 mx-auto p-12   space-y-10">
         <div className="flex justify-between gap-12 items-center">
           <div className="space-y-4">
-            <h1 className="text-2xl font-semibold">Proses Cepat dan Mudah</h1>
+            <h1 className="text-2xl font-semibold">
+              Calculate Your Loan in Seconds
+            </h1>
             <p className="text-md text-neutral-600 ">
-              Murni Bank siap memenuhi kebutuhan Anda dengan proses yang mudah
-              dan cepat. Nikmati pelayanan prima dan pengalaman yang
-              menyenangkan, hadir di seluruh Indonesia untuk lebih dekat dengan
-              Anda.
+              From cars to motorcycles, use our simulation tool to find the best
+              loan options for you.
             </p>
           </div>
           <img className="w-60" src="/car-leasing.png" alt="" />
@@ -160,14 +160,9 @@ export default function FormSimulation() {
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
             <div className="flex gap-2 items-center mb-8">
               <img src="/credit-icon.svg" alt="" />
-              <h2 className="text-xl font-semibold">
-                Simulasi Kredit Kendaraan
-              </h2>
+              <h2 className="text-xl font-semibold">Loan Simulation</h2>
             </div>
             <form className="space-y-4">
-              <label htmlFor="jenisSimulasi" className="block mb-1">
-                Pilih kendaraan:
-              </label>
               <div className="flex justify-between gap-4">
                 <div
                   className={`flex space-y-4 border ${
@@ -183,7 +178,7 @@ export default function FormSimulation() {
                   }
                 >
                   <img src="/Mobil.png" alt="" />
-                  <p className="font-medium">Mobil</p>
+                  <p className="font-medium">Car</p>
                 </div>
                 <div
                   className={`flex space-y-4 border ${
@@ -199,13 +194,13 @@ export default function FormSimulation() {
                   }
                 >
                   <img src="/Motor.png" alt="" />
-                  <p className="font-medium">Motor</p>
+                  <p className="font-medium">Motorcycle</p>
                 </div>
               </div>
 
               <div>
                 <label htmlFor="jenisKendaraan" className="block mb-1">
-                  Jenis Kendaraan
+                  Vehicle Type
                 </label>
                 <select
                   id="jenisKendaraan"
@@ -213,15 +208,15 @@ export default function FormSimulation() {
                   value={formValues.jenisKendaraan}
                   onChange={handleInputChange}
                 >
-                  <option value="">Pilih Jenis Kendaraan</option>
-                  <option value="baru">Baru</option>
-                  <option value="bekas">Bekas</option>
+                  <option value="">Choose Here</option>
+                  <option value="baru">New</option>
+                  <option value="bekas">Second</option>
                 </select>
               </div>
 
               <div>
                 <label htmlFor="hargaKendaraan" className="block mb-1">
-                  Harga Kendaraan
+                  Vehicle Price
                 </label>
                 <div className="relative">
                   <span className="absolute left-3 top-2">Rp</span>
@@ -238,7 +233,7 @@ export default function FormSimulation() {
               </div>
               <div>
                 <label htmlFor="uangMuka" className="block mb-1">
-                  Uang Muka
+                  Down Payment
                 </label>
                 <div className="relative">
                   <span className="absolute left-3 top-2">Rp</span>
@@ -255,7 +250,7 @@ export default function FormSimulation() {
 
               <div>
                 <label htmlFor="wilayahAsuransi" className="block mb-1">
-                  Wilayah Asuransi
+                  Insurance Area
                 </label>
                 <select
                   id="wilayahAsuransi"
@@ -263,8 +258,11 @@ export default function FormSimulation() {
                   value={formValues.wilayahAsuransi}
                   onChange={handleInputChange}
                 >
-                  <option value="">Pilih Wilayah Asuransi</option>
-                  <option value="wilayah1"> Sumatera dan sekitarnya</option>
+                  <option value="">Choose Here</option>
+                  <option value="wilayah1">
+                    {" "}
+                    Sumatra and Surrounding Areas
+                  </option>
                   onFocus=
                   {() => {
                     if ("inputMode" in document.createElement("input")) {
@@ -272,7 +270,7 @@ export default function FormSimulation() {
                       input.inputMode = "numeric";
                     }
                   }}
-                  <option value="wilayah2">Jakarta dan Bodetabek</option>
+                  <option value="wilayah2">Jakarta and Bodetabek</option>
                   onFocus=
                   {() => {
                     if ("virtualKeyboard" in navigator) {
@@ -280,13 +278,13 @@ export default function FormSimulation() {
                       navigator.virtualKeyboard.show();
                     }
                   }}
-                  <option value="wilayah3">Wilayah Indonesia Lainnya</option>
+                  <option value="wilayah3">Other Regions in Indonesia</option>
                 </select>
               </div>
 
               <div>
                 <label htmlFor="jenisAsuransi" className="block mb-1">
-                  Jenis Asuransi
+                  Insurance Type
                 </label>
                 <select
                   id="jenisAsuransi"
@@ -294,15 +292,17 @@ export default function FormSimulation() {
                   value={formValues.jenisAsuransi}
                   onChange={handleInputChange}
                 >
-                  <option value="">Pilih Jenis Asuransi</option>
-                  <option value="comprehensive">Comprehensive</option>
-                  <option value="tlo">TLO</option>
+                  <option value="">Choose here</option>
+                  <option value="comprehensive">
+                    All Risk (Comprehensive)
+                  </option>
+                  <option value="tlo">Total Loss Only (TLO)</option>
                 </select>
               </div>
 
               <div>
                 <label htmlFor="provinsi" className="block mb-1">
-                  Provinsi
+                  Province{" "}
                 </label>
                 <select
                   className="w-full p-2 border border-neutral-300 rounded"
@@ -311,7 +311,7 @@ export default function FormSimulation() {
                   value={formValues.provinsi}
                   onChange={handleInputChange}
                 >
-                  <option value="">Pilih Provinsi</option>
+                  <option value="">Choose here</option>
                   {provinces.map((prov) => (
                     <option key={prov.id} value={prov.id}>
                       {prov.nama}
@@ -322,7 +322,7 @@ export default function FormSimulation() {
 
               <div className="mb-3">
                 <label htmlFor="domisili" className="form-label">
-                  Domisili
+                  Domicile
                 </label>
                 <select
                   className="w-full p-2 border border-neutral-300 rounded"
@@ -332,7 +332,7 @@ export default function FormSimulation() {
                   onChange={handleInputChange}
                   disabled={!formValues.provinsi}
                 >
-                  <option value="">Pilih Kabupaten/Kota</option>
+                  <option value="">Choose here</option>
                   {Array.isArray(kabupaten) &&
                     kabupaten.map((kab) => (
                       <option key={kab.id} value={kab.id}>
@@ -347,7 +347,7 @@ export default function FormSimulation() {
                 className="w-full bg-primary text-white p-2 rounded"
                 onClick={handleCalculate}
               >
-                Hitung
+                Calculate Now
               </button>
 
               {errorMessage && (
@@ -378,11 +378,11 @@ export default function FormSimulation() {
           <div className="bg-white border border-neutral-200 p-6 rounded-lg shadow-md">
             <div className="flex gap-2 items-center mb-8">
               <img src="/installments-icon.svg" alt="" />
-              <h2 className="text-xl font-semibold ">Estimasi Angsuran</h2>
+              <h2 className="text-xl font-semibold ">Loan Estimations</h2>
             </div>
             <p className="mt-4 mb-4  italic text-gray-600">
-              Nominal angsuran bersifat estimasi dan dapat berubah sesuai dengan
-              syarat dan ketentuan yang berlaku.
+              The amounts below are estimates and may change according to the
+              applicable terms and conditions.
             </p>
             {estimasiAngsuran && (
               <div>

@@ -5,19 +5,19 @@ const Faq = () => {
 
   const faqs = [
     {
-      question: "Apa itu simulasi kredit kendaraan?",
+      question: "What is a vehicle loan simulation?",
       answer:
-        "Simulasi kredit kendaraan adalah alat untuk menghitung estimasi cicilan kendaraan berdasarkan tenor, TDP, dan bunga tertentu.",
+        "A vehicle loan simulation is a tool used to calculate the estimated monthly installments for a vehicle loan based on tenure, down payment, and interest rates.",
     },
     {
-      question: "Apa saja data yang diperlukan untuk simulasi kredit?",
+      question: "What information is needed for a loan simulation?",
       answer:
-        "Anda perlu memasukkan harga kendaraan, jumlah uang muka (TDP), tenor, dan suku bunga untuk melakukan simulasi.",
+        "You need to provide vehicle type. down payment, insurance type & area, domicile, and others.",
     },
     {
-      question: "Apakah hasil simulasi kredit sudah termasuk biaya tambahan?",
+      question: "Does the loan simulation include additional fees?",
       answer:
-        "Hasil simulasi biasanya belum termasuk biaya tambahan seperti asuransi atau administrasi. Pastikan untuk memverifikasi dengan dealer.",
+        "Typically, a loan simulation does not include additional fees such as administrative costs. It's essential to verify with us or the dealership for a complete breakdown of all costs.",
     },
   ];
 
