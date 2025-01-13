@@ -11,12 +11,12 @@ export default function Footer() {
         <div className="flex justify-between items-end">
           <div className="space-y-2">
             <p className="text-white max-w-lg text-center">
-              Alamat: Jl. Lkr. Luar Barat No.1, RT.7/RW.6, Duri Kosambi,
+              Address: Jl. Lkr. Luar Barat No.1, RT.7/RW.6, Duri Kosambi,
               Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota
               Jakarta 11750{" "}
             </p>
             <p className="text-white max-w-lg text-center">
-              Telepon: (021) 5841060
+              Contact: (021) 5841060
             </p>
           </div>
         </div>

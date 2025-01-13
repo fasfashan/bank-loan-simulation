@@ -16,50 +16,60 @@ export default function FormSimulation() {
   const [kabupaten, setKabupaten] = useState([]);
   const [estimasiAngsuran, setEstimasiAngsuran] = useState(null);
 
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [regencies, setRegencies] = useState([]);
   const tenors = [11, 24, 36, 48];
-
-  // Fetch provinces data
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
         const response = await fetch(
-          "https://dev.farizdotid.com/api/daerahindonesia/provinsi"
+          "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
         );
+        if (!response.ok) {
+          throw new Error("Failed to fetch provinces");
+        }
         const data = await response.json();
-        setProvinces(data.provinsi);
+        setProvinces(data); // Simpan data provinsi ke state
       } catch (error) {
         console.error("Error fetching provinces:", error);
-        setProvinces([]);
       }
     };
 
     fetchProvinces();
   }, []);
-  useEffect(() => {
+
+  // Fetch daftar kabupaten/kota berdasarkan provinsi
+  const fetchRegencies = async (provinceId) => {
+    try {
+      const response = await fetch(
+        `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinceId}.json`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch regencies");
+      }
+      const data = await response.json();
+      setRegencies(data); // Simpan data kabupaten/kota ke state
+    } catch (error) {
+      console.error("Error fetching regencies:", error);
+    }
+  };
+  const handleRegencyChange = (event) => {
     setFormValues((prev) => ({
       ...prev,
-      jenisSimulasi: "mobil",
+      domisili: event.target.value,
     }));
-  }, []);
-  // Fetch regencies data when province changes
-  useEffect(() => {
-    const fetchKabupaten = async () => {
-      if (formValues.provinsi) {
-        try {
-          const response = await fetch(
-            `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${formValues.provinsi}`
-          );
-          const data = await response.json();
-          setKabupaten(data.kota_kabupaten);
-        } catch (error) {
-          console.error("Error fetching kabupaten:", error);
-          setKabupaten([]);
-        }
-      }
-    };
+  };
+  // Handle perubahan dropdown provinsi
+  const handleProvinceChange = (event) => {
+    const provinceId = event.target.value;
+    setSelectedProvince(provinceId);
+    setFormValues((prev) => ({
+      ...prev,
+      provinsi: provinceId,
+    }));
+    fetchRegencies(provinceId); // Ambil data kabupaten/kota sesuai provinsi yang dipilih
+  };
 
-    fetchKabupaten();
-  }, [formValues.provinsi]);
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     let formattedValue = value;
@@ -102,7 +112,7 @@ export default function FormSimulation() {
       !uangMuka
     ) {
       setErrorMessage(
-        "Harap lengkapi semua form sebelum menghitung estimasi angsuran."
+        "Please complete all forms before calculating the estimated installments."
       );
       setTimeout(() => {
         setErrorMessage("");
@@ -111,24 +121,27 @@ export default function FormSimulation() {
     }
 
     // Improved calculation logic
+    // Parse input values
     const harga = parseInt(hargaKendaraan.replace(/\./g, ""), 10) || 0;
     const dp = parseInt(uangMuka.replace(/\./g, ""), 10) || 0;
 
-    // Validate minimum DP (usually 20% of vehicle price)
-    // const minDP = harga * 0.2;
-    // if (dp < minDP) {
-    //   alert(`Uang muka minimum adalah ${formatCurrency(minDP.toString())}`);
-    //   return;
-    // }
+    // Yearly interest rate in decimal (misalnya 10% = 0.10)
+    const bungaTahunan = 0.1;
 
     // Calculate monthly payments for each tenor
-    const bunga = 0.1; // 10% annual interest rate
     setEstimasiAngsuran(
       tenors.map((tenor) => {
-        const sisaHutang = harga - dp;
-        const bungaBulanan = bunga / 12;
+        const pokokPinjaman = harga - dp;
+        const bungaBulanan = bungaTahunan / 12; // Convert yearly rate to monthly
+
+        // Menggunakan rumus PMT (Payment for loan)
+        // PMT = P * (r * (1 + r)^n) / ((1 + r)^n - 1)
+        // P = Principal (pokok pinjaman)
+        // r = Monthly interest rate
+        // n = Total number of months
+
         const angsuranPerBulan = Math.round(
-          (sisaHutang * bungaBulanan * Math.pow(1 + bungaBulanan, tenor)) /
+          (pokokPinjaman * (bungaBulanan * Math.pow(1 + bungaBulanan, tenor))) /
             (Math.pow(1 + bungaBulanan, tenor) - 1)
         );
 
@@ -300,48 +313,43 @@ export default function FormSimulation() {
                 </select>
               </div>
 
-              <div>
-                <label htmlFor="provinsi" className="block mb-1">
-                  Province{" "}
+              <div className="">
+                {/* Dropdown untuk Provinsi */}
+                <label htmlFor="province" className="block mb-2 font-medium">
+                  Province
                 </label>
                 <select
-                  className="w-full p-2 border border-neutral-300 rounded"
-                  id="provinsi"
-                  name="provinsi"
-                  value={formValues.provinsi}
-                  onChange={handleInputChange}
+                  id="province"
+                  value={selectedProvince}
+                  onChange={handleProvinceChange}
+                  className="border rounded p-2 w-full mb-4"
                 >
-                  <option value="">Choose here</option>
-                  {provinces.map((prov) => (
-                    <option key={prov.id} value={prov.id}>
-                      {prov.nama}
+                  <option value="">Choose here </option>
+                  {provinces.map((province) => (
+                    <option key={province.id} value={province.id}>
+                      {province.name}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Dropdown untuk Kabupaten/Kota */}
+                <label htmlFor="regency" className="block mb-2 font-medium">
+                  Domicile
+                </label>
+                <select
+                  id="domisili" // Ubah id menjadi 'domisili' agar sesuai dengan formValues
+                  value={formValues.domisili}
+                  onChange={handleRegencyChange}
+                  className="border rounded p-2 w-full"
+                >
+                  <option value="">Select District/City</option>
+                  {regencies.map((regency) => (
+                    <option key={regency.id} value={regency.id}>
+                      {regency.name}
                     </option>
                   ))}
                 </select>
               </div>
-
-              <div className="mb-3">
-                <label htmlFor="domisili" className="form-label">
-                  Domicile
-                </label>
-                <select
-                  className="w-full p-2 border border-neutral-300 rounded"
-                  id="domisili"
-                  name="domisili"
-                  value={formValues.domisili}
-                  onChange={handleInputChange}
-                  disabled={!formValues.provinsi}
-                >
-                  <option value="">Choose here</option>
-                  {Array.isArray(kabupaten) &&
-                    kabupaten.map((kab) => (
-                      <option key={kab.id} value={kab.id}>
-                        {kab.nama}
-                      </option>
-                    ))}
-                </select>
-              </div>
-
               <button
                 type="button"
                 className="w-full bg-primary text-white p-2 rounded"
