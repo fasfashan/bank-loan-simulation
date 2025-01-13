@@ -13,7 +13,7 @@ export default function FormSimulation() {
     uangMuka: "",
   });
   const [provinces, setProvinces] = useState([]);
-  const [kabupaten, setKabupaten] = useState([]);
+
   const [estimasiAngsuran, setEstimasiAngsuran] = useState(null);
 
   const [selectedProvince, setSelectedProvince] = useState("");
@@ -402,17 +402,17 @@ export default function FormSimulation() {
                     >
                       <div className="space-y-2">
                         <h3 className=" font-semibold">
-                          Tenor {item.tenor} bulan
+                          Tenure {item.tenor} bulan
                         </h3>
                         <div className="space-y-1">
                           <p className="text-sm text-gray-600">
-                            Angsuran per bulan:{" "}
+                            Monthly Installment:{" "}
                             <strong className="text-black">
                               Rp {formatCurrency(item.angsuran.toString())}
                             </strong>
                           </p>
                           <p className="text-sm text-gray-600">
-                            Total uang muka:{" "}
+                            Total Down Payment:{" "}
                             <strong className="text-black">
                               Rp {formatCurrency(item.totalUangMuka.toString())}
                             </strong>
