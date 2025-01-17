@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const images = ["/slider-1.png", "/slider-2.png"];
+const images = ["/slider-1.png"];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
